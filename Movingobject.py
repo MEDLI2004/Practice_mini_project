@@ -1,16 +1,14 @@
 import cv2
-#import time
 import imutils
 
 cam = cv2.VideoCapture(0)
-#time.sleep(1)
 
 firstframe=None
 area=500
 
 while True:
     _,img=cam.read()
-    text="Aarum Illa"
+    text="Normal"
     qimg=imutils.resize(img,width=1000)
     grayimg=cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
     Smooth=cv2.GaussianBlur(grayimg,(21,21),0)
@@ -30,7 +28,7 @@ while True:
         
             (x,y,w,h)=cv2.boundingRect(c)
             cv2.rectangle(img,(x,y),(x+w,y+h),(0,255,0),2)
-            text="Aarada Nee Mone"
+            text="Moving object detecting"
     print(text)
     cv2.putText(img,text,(10,20),cv2.FONT_HERSHEY_COMPLEX,0.5,(0,0,255),2)
     cv2.imshow("Camerafeed",img)
